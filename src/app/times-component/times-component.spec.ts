@@ -1,0 +1,22 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { TimesComponent } from './times-component';
+
+describe('TimesComponent', () => {
+  let component: TimesComponent;
+  let fixture: ComponentFixture<TimesComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [TimesComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(TimesComponent);
+    component = fixture.componentInstance;
+    await fixture.whenStable();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

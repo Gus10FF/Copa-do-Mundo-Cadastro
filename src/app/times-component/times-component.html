@@ -1,0 +1,30 @@
+<div class="container">
+
+  <div class="display-4 text-center">Cadastro das Seleções</div>
+
+  <form [formGroup]="formGroupTimes">
+   <div class="mb-3">
+      <label for="inputNational" class="form-label">Seleção</label>
+      <input formControlName="national" type="text" class="form-control" id="inputNational">
+    </div>
+
+    <div class="mb-3">
+      <label for="inputTrainer" class="form-label">Treinador</label>
+      <input formControlName="trainer" type="text" class="form-control" id="inputTrainer">
+    </div>
+
+    <div class="mb-3">
+      <label for="inputDate" class="form-label">Data do jogo</label>
+      <input formControlName="date" type="date" class="form-control" id="inputDate">
+    </div>
+
+     <div class="mb-3">
+      <label for="inputFisic" class="form-label">Preparador Fisíco</label>
+      <input formControlName="fisic" type="text" class="form-control" id="inputFisic">
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="save()">Salvar</button>
+  </form>
+</div>
+
+
