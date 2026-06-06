@@ -1,0 +1,62 @@
+/* times-component.css */
+.times-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: linear-gradient(145deg, #009c3b, #ffdf00);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  font-family: 'Montserrat', sans-serif;
+  color: #002776;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.title {
+  font-family: 'Bungee', cursive;
+  font-size: 2.5rem;
+  text-align: center;
+  color: #002776;
+  text-shadow: 3px 3px #ffdf00;
+  margin-bottom: 1.5rem;
+}
+
+
+.form-label {
+  font-weight: 600;
+  color: #002776;
+}
+
+.form-control {
+  border: 2px solid #002776;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #ffdf00;
+  box-shadow: 0 0 10px #009c3b;
+}
+
+.btn-save {
+  display: block;
+  width: 100%;
+  background: #002776;
+  color: #ffdf00;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.btn-save:hover {
+  background: #009c3b;
+  color: white;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

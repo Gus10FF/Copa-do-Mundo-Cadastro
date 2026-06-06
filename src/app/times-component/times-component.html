@@ -1,9 +1,9 @@
-<div class="container">
+<div class="times-container">
 
-  <div class="display-4 text-center">Cadastro das Seleções</div>
+  <div class="title">Cadastro das Seleções</div>
 
   <form [formGroup]="formGroupTimes">
-   <div class="mb-3">
+    <div class="mb-3">
       <label for="inputNational" class="form-label">Seleção</label>
       <input formControlName="national" type="text" class="form-control" id="inputNational">
     </div>
@@ -18,13 +18,11 @@
       <input formControlName="date" type="date" class="form-control" id="inputDate">
     </div>
 
-     <div class="mb-3">
-      <label for="inputFisic" class="form-label">Preparador Fisíco</label>
+    <div class="mb-3">
+      <label for="inputFisic" class="form-label">Preparador Físico</label>
       <input formControlName="fisic" type="text" class="form-control" id="inputFisic">
     </div>
 
-    <button type="submit" class="btn btn-primary" (click)="save()">Salvar</button>
+    <button type="submit" class="btn btn-save" (click)="save()">Salvar</button>
   </form>
 </div>
-
-

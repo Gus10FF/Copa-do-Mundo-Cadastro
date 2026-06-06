@@ -6,12 +6,11 @@ import { TimesComponent } from './times-component/times-component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavBarComponent } from './nav-bar-component/nav-bar-component';
-import { BlocosComponent } from './blocos-component/blocos-component';
 import { FooterComponent } from './footer-component/footer-component';
 import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
-  declarations: [App, TimesComponent, NavBarComponent, BlocosComponent, FooterComponent],
+  declarations: [App, TimesComponent, NavBarComponent, FooterComponent],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],

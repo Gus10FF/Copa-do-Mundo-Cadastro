@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Times } from "../times"
 import { TimesService } from '../times-service';
@@ -10,7 +10,7 @@ import { TimesService } from '../times-service';
   styleUrl: './times-component.css',
 })
 export class TimesComponent implements OnInit{
-  times: signal<Times[]>([]);
+  times = signal<Times[]>([]);
   formGroupTimes: FormGroup;
 
    constructor(private formBuilder: FormBuilder, private service: TimesService) {
@@ -30,7 +30,7 @@ export class TimesComponent implements OnInit{
   }
 
  save() {
-    this.times.push(this.formGroupTimes.value);
+    this.times.update((times) => [...times, this.formGroupTimes.value]);
     this.formGroupTimes.reset();
   }
 

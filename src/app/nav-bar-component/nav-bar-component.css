@@ -1,0 +1,31 @@
+/* navbar.css */
+.navbar {
+  background: #002776; /* azul forte */
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar a {
+  color: #ffdf00; /* amarelo vibrante */
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #009c3b; /* verde */
+}
+
+.navbar-logo {
+  font-family: 'Fugaz One', cursive; /* Fonte inclinada e dinâmica */
+  font-size: 2rem;
+  color: #ffdf00;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+

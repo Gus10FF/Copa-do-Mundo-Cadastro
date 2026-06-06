@@ -1,7 +1,28 @@
+/* footer.css */
 .footer {
-    background-color: #f8f9fa;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+  background: linear-gradient(90deg, #009c3b, #ffdf00, #002776);
+  color: white;
+  text-align: center;
+  padding: 0.1rem;
+  font-family: 'Montserrat', sans-serif;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  animation: slideUp 1s ease-in-out;
+}
+
+.footer p {
+  font-family: 'Passion One', cursive; /* Fonte pesada e chamativa */
+  font-size: 1.2rem;
+  color: white;
+}
+
+.footer span {
+  color: #ffdf00;
+  font-weight: bold;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }
