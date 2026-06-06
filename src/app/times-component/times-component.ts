@@ -29,9 +29,17 @@ export class TimesComponent implements OnInit{
     });
   }
 
- save() {
-    this.times.update((times) => [...times, this.formGroupTimes.value]);
-    this.formGroupTimes.reset();
-  }
+  save(){
+    this.service.save(this.formGroupTimes.value).subscribe(
+     {
+       next: json => {
+          this.times.update(times => [...times, json]);
+          this.formGroupTimes.reset();
+       }
+     }
+    );
+ }
+
+
 
 }

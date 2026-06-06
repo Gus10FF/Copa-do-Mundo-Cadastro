@@ -14,4 +14,10 @@ export class TimesService {
   getAllTimes(): Observable<Times[]> {
     return this.http.get<Times[]>(this.apiUrl);
   }
+
+  save(times: Times): Observable<Times>{
+    return this.http.post<Times>(this.apiUrl, times);
+
+
+  }
 }
