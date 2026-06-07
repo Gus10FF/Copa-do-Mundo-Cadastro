@@ -2,23 +2,23 @@
   "times": [
     {
       "id": 1,
-      "national": "Product 1",
+      "national": "National 1",
       "trainer": "Trainer 1",
-      "date": "Description for Product 1",
+      "date": " 1",
       "fisic": "Fisic 1"
     },
     {
       "id": 2,
-      "national": "Product 2",
+      "national": "National 2",
       "trainer": "Trainer 2",
-      "date": "Description for Product 2",
+      "date": "2",
       "fisic": "Fisic 2"
     },
     {
       "id": 3,
-      "national": "Product 3",
+      "national": "National 3",
       "trainer": "Trainer 3",
-      "date": "Description for Product 3",
+      "date": "3",
       "fisic": "Fisic 3"
     },
     {

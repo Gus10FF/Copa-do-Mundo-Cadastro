@@ -10,7 +10,7 @@ import { TimesService } from '../times-service';
   styleUrl: './times-component.css',
 })
 export class TimesComponent implements OnInit{
-  times = signal<Times[]>([]);
+  times=  signal<Times[]>([]);
   formGroupTimes: FormGroup;
 
    constructor(private formBuilder: FormBuilder, private service: TimesService) {
@@ -40,6 +40,13 @@ export class TimesComponent implements OnInit{
     );
  }
 
+delete(times: Times) {
+  this.service.delete(times).subscribe({
+    next: () => {
+      this.times.update(lista => lista.filter(t => t.id !== times.id));
+    }
+  });
+}
 
 
 }

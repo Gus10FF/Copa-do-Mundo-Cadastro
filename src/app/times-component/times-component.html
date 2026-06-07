@@ -27,4 +27,28 @@
   </form>
 </div>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">⚽ </th>
+      <th scope="col">Seleção</th>
+      <th scope="col">Treinador</th>
+      <th scope="col">Data do jogo</th>
+      <th scope="col">Preparador Físico</th>
+      <th scope="col">Deletar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let t of times()">
+      <th scope="row">{{t.id}}</th>
+      <td>{{t.national}}</td>
+      <td>{{t.trainer}}</td>
+      <td>{{t.date}}</td>
+      <td>{{t.fisic}}</td>
+      <td>
+          <button class="btn btn-danger" (click)="delete(t)">Remover</button>
+      </td>
+    </tr>
 
+
+  </tbody>
