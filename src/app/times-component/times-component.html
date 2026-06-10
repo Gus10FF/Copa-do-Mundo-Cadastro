@@ -27,28 +27,42 @@
   </form>
 </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">⚽ </th>
-      <th scope="col">Seleção</th>
-      <th scope="col">Treinador</th>
-      <th scope="col">Data do jogo</th>
-      <th scope="col">Preparador Físico</th>
-      <th scope="col">Deletar</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let t of times()">
-      <th scope="row">{{t.id}}</th>
-      <td>{{t.national}}</td>
-      <td>{{t.trainer}}</td>
-      <td>{{t.date}}</td>
-      <td>{{t.fisic}}</td>
-      <td>
-          <button class="btn btn-danger" (click)="delete(t)">Remover</button>
-      </td>
-    </tr>
+<h4>Times cadastrados (lista de espera)</h4>
+<div class="times-list"
+     cdkDropList
+     [cdkDropListData]="listaEspera"
+     [cdkDropListConnectedTo]="groupIds"
+     (cdkDropListDropped)="drop($event, -1)">
+  <div *ngFor="let t of listaEspera"
+       cdkDrag
+       class="time-card">
+    {{t.national}}
+    <button class="delete-btn" (click)="deleteTime(t)">🗑️</button>
+  </div>
+</div>
 
 
-  </tbody>
+
+<div class="groups">
+  <div *ngFor="let g of grupos; let i = index"
+       cdkDropList
+       [id]="'group-'+i"
+       [cdkDropListData]="g.times"
+       [cdkDropListConnectedTo]="['times-list', ...groupIds]"
+       (cdkDropListDropped)="drop($event, i)"
+       class="group-block">
+
+    <h5>Grupo {{i+1}}</h5>
+
+    <div *ngFor="let t of g.times"
+         cdkDrag
+         class="time-card">
+      {{t.national}}
+      <button class="delete-btn" (click)="deleteTime(t)">🗑️</button>
+    </div>
+  </div>
+</div>
+
+
+
+

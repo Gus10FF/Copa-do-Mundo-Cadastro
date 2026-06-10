@@ -8,10 +8,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NavBarComponent } from './nav-bar-component/nav-bar-component';
 import { FooterComponent } from './footer-component/footer-component';
 import { provideHttpClient } from '@angular/common/http';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [App, TimesComponent, NavBarComponent, FooterComponent],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule, DragDropModule ],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],
 })

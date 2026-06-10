@@ -2,38 +2,31 @@
   "times": [
     {
       "id": 1,
-      "national": "National 1",
-      "trainer": "Trainer 1",
-      "date": " 1",
-      "fisic": "Fisic 1"
+      "national": "México",
+      "trainer": "Javier Aguirre",
+      "date": "2026-06-11",
+      "fisic": "Pol Lorento"
     },
     {
       "id": 2,
-      "national": "National 2",
-      "trainer": "Trainer 2",
-      "date": "2",
-      "fisic": "Fisic 2"
+      "national": "África do Sul",
+      "trainer": "Hugo Broos",
+      "date": "2026-06-11",
+      "fisic": "Peter Janssens"
     },
     {
       "id": 3,
-      "national": "National 3",
-      "trainer": "Trainer 3",
-      "date": "3",
-      "fisic": "Fisic 3"
+      "national": "Coreia do Sul",
+      "trainer": "Hong Myung-bo",
+      "date": "2026-06-11",
+      "fisic": "Nuno Matias"
     },
     {
       "id": 4,
-      "national": "a",
-      "trainer": "b",
-      "date": "2026-06-24",
-      "fisic": "c"
-    },
-    {
-      "id": 5,
-      "national": "sffggsfg",
-      "trainer": "sgsg",
-      "date": "2026-06-17",
-      "fisic": "w"
+      "national": "Tchéquia",
+      "trainer": "Miroslav Koubek",
+      "date": "2026-06-11",
+      "fisic": "Martin Kojnok"
     }
   ]
 }
