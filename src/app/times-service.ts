@@ -24,4 +24,9 @@ export class TimesService {
   delete(times: Times): Observable<void>{
     return this.http.delete<void>(`${this.apiUrl}/${times.id}`);
  }
+
+ update(id: number, time: Times) {
+  return this.http.put<Times>(`http://localhost:3000/times/${id}`, time);
+}
+
 }

@@ -27,6 +27,13 @@ export class TimesComponent implements OnInit{
 grupos: { times: Times[] }[] = Array.from({ length: 12 }, () => ({ times: [] }));
 groupIds = Array.from({ length: 12 }, (_, i) => 'group-' + i);
 
+selectedTime: Times | null = null;
+
+showDetails(time: Times) {
+  this.selectedTime = time;
+}
+
+
 drop(event: CdkDragDrop<Times[]>, groupIndex: number) {
   if (event.previousContainer === event.container) {
     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -77,15 +84,60 @@ ngOnInit(): void {
 }
 
 
-save() {
-  this.service.save(this.formGroupTimes.value).subscribe({
-    next: json => {
-      this.times.update(times => [...times, json]);
-      this.listaEspera.push(json); // adiciona na lista de espera
-      this.formGroupTimes.reset();
-    }
+editingId: number | null = null;
+
+editTime(time: Times) {
+  this.formGroupTimes.patchValue({
+    id: time.id,
+    national: time.national,
+    trainer: time.trainer,
+    date: time.date,
+    fisic: time.fisic
   });
+  this.editingId = time.id;
 }
+
+save() {
+  const timeData: Times = this.formGroupTimes.value;
+
+  if (this.editingId) {
+    // Atualizar no JSON Server
+    this.service.update(this.editingId, timeData).subscribe({
+      next: updated => {
+        // Atualiza no signal
+        this.times.update(lista =>
+          lista.map(t => t.id === updated.id ? updated : t)
+        );
+
+        // Atualiza na lista de espera
+        this.listaEspera = this.listaEspera.map(t =>
+          t.id === updated.id ? updated : t
+        );
+
+        // Atualiza nos grupos
+        this.grupos.forEach(g => {
+          g.times = g.times.map(t =>
+            t.id === updated.id ? updated : t
+          );
+        });
+
+        localStorage.setItem('grupos', JSON.stringify(this.grupos));
+        this.editingId = null;
+        this.formGroupTimes.reset();
+      }
+    });
+  } else {
+    // Criar novo
+    this.service.save(timeData).subscribe({
+      next: json => {
+        this.times.update(times => [...times, json]);
+        this.listaEspera.push(json);
+        this.formGroupTimes.reset();
+      }
+    });
+  }
+}
+
 deleteTime(time: Times) {
   this.service.delete(time).subscribe({
     next: () => {
@@ -105,6 +157,7 @@ deleteTime(time: Times) {
     }
   });
 }
+
 
 
 }

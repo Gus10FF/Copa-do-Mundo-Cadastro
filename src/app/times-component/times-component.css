@@ -56,6 +56,16 @@
   transform: scale(1.05);
 }
 
+.time-details{
+  font-family: 'Montserrat', sans-serif;
+  background: #ffffff;
+  border: 10px solid #aef77e;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 1rem;
+
+}
+
 .times-list{
   font-family: 'Montserrat', sans-serif;
   display: flex;

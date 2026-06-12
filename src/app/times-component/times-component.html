@@ -27,6 +27,14 @@
   </form>
 </div>
 
+<div *ngIf="selectedTime" class="time-details">
+  <h4>Detalhes do Time</h4>
+  <p><strong>Seleção:</strong> {{selectedTime.national}}</p>
+  <p><strong>Treinador:</strong> {{selectedTime.trainer}}</p>
+  <p><strong>Data do jogo:</strong> {{selectedTime.date}}</p>
+  <p><strong>Preparador Físico:</strong> {{selectedTime.fisic}}</p>
+</div>
+
 <h4>Times cadastrados (lista de espera)</h4>
 <div class="times-list"
      cdkDropList
@@ -37,6 +45,7 @@
        cdkDrag
        class="time-card">
     {{t.national}}
+     <button class="edit-btn" (click)="editTime(t)">✏️</button>
     <button class="delete-btn" (click)="deleteTime(t)">🗑️</button>
   </div>
 </div>
@@ -56,12 +65,17 @@
 
     <div *ngFor="let t of g.times"
          cdkDrag
-         class="time-card">
+         class="time-card"
+         (click)="showDetails(t)">
       {{t.national}}
-      <button class="delete-btn" (click)="deleteTime(t)">🗑️</button>
+       <button class="edit-btn" (click)="editTime(t); $event.stopPropagation()">✏️</button>
+  <button class="delete-btn" (click)="deleteTime(t); $event.stopPropagation()">🗑️</button>
     </div>
   </div>
 </div>
+
+
+
 
 
 
