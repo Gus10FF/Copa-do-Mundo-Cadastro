@@ -7,7 +7,7 @@ import { Times } from './times';
   providedIn: 'root',
 })
 export class TimesService {
-   apiUrl = "http://localhost:3000/times";
+   apiUrl = "http://localhost:8080/times";
 
   constructor(private http: HttpClient) {}
 
@@ -20,13 +20,13 @@ export class TimesService {
 
   }
 
-  // HTTP DELETE: http://localhost:3000/times/6
+  // HTTP DELETE: http://localhost:8080/times/6
   delete(times: Times): Observable<void>{
     return this.http.delete<void>(`${this.apiUrl}/${times.id}`);
  }
 
  update(id: number, time: Times) {
-  return this.http.put<Times>(`http://localhost:3000/times/${id}`, time);
+  return this.http.put<Times>(`${this.apiUrl}/${id}`, time);
 }
 
 }

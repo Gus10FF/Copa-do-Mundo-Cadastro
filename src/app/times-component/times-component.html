@@ -38,14 +38,14 @@
 <h4>Times cadastrados (lista de espera)</h4>
 <div class="times-list"
      cdkDropList
-     [cdkDropListData]="listaEspera"
+     [cdkDropListData]="listaEspera()"
      [cdkDropListConnectedTo]="groupIds"
      (cdkDropListDropped)="drop($event, -1)">
-  <div *ngFor="let t of listaEspera"
+  <div *ngFor="let t of listaEspera()"
        cdkDrag
        class="time-card">
     {{t.national}}
-     <button class="edit-btn" (click)="editTime(t)">✏️</button>
+    <button class="edit-btn" (click)="editTime(t)">✏️</button>
     <button class="delete-btn" (click)="deleteTime(t)">🗑️</button>
   </div>
 </div>
@@ -53,7 +53,7 @@
 
 
 <div class="groups">
-  <div *ngFor="let g of grupos; let i = index"
+  <div *ngFor="let g of grupos(); let i = index"
        cdkDropList
        [id]="'group-'+i"
        [cdkDropListData]="g.times"
