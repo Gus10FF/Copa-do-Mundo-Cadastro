@@ -27,9 +27,12 @@ export class TimesComponent implements OnInit{
 grupos = signal<{ times: Times[] }[]>(Array.from({ length: 12 }, () => ({ times: [] })));
 groupIds = Array.from({ length: 12 }, (_, i) => 'group-' + i);
 
-selectedTime: Times | null = null;
+
+selectedTime?: Times;
+
 
 showDetails(time: Times) {
+  console.log(time);
   this.selectedTime = time;
 }
 
