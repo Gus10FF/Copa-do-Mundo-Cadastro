@@ -108,6 +108,7 @@ ngOnInit(): void {
 editingId: number | null = null;
 
 editTime(time: Times) {
+
   this.formGroupTimes.patchValue({
     id: time.id,
     national: time.national,
@@ -116,35 +117,36 @@ editTime(time: Times) {
     fisic: time.fisic
   });
   this.editingId = time.id;
+
 }
 
 save() {
   const timeData: Times = this.formGroupTimes.value;
 
   if (this.editingId) {
-    // Atualizar no JSON Server
+    // Atualizar existente
     this.service.update(this.editingId, timeData).subscribe({
-      next: updated => {
-        // Atualiza no signal times
-        this.times.update(lista =>
-          lista.map(t => t.id === updated.id ? updated : t)
-        );
+      next: () => {
+       this.service.getAllTimes().subscribe(lista => {
+  this.times.set(lista);
 
-        // Atualiza na lista de espera
-        this.listaEspera.update(lista =>
-          lista.map(t => t.id === updated.id ? updated : t)
-        );
+  const usados = this.grupos().flatMap(g => g.times.map(t => t.id));
+  this.listaEspera.set(lista.filter(t => !usados.includes(t.id)));
 
-        // Atualiza nos grupos
-        this.grupos.update(grupos =>
-          grupos.map(g => ({
-            times: g.times.map(t =>
-              t.id === updated.id ? updated : t
-            )
-          }))
-        );
+  // Atualiza os grupos com os dados novos
+  this.grupos.update(grupos =>
+    grupos.map(g => ({
+      ...g,
+      times: g.times.map(t => {
+        const atualizado = lista.find(novo => novo.id === t.id);
+        return atualizado ? atualizado : t;
+      })
+    }))
+  );
 
-        localStorage.setItem('grupos', JSON.stringify(this.grupos()));
+  localStorage.setItem('grupos', JSON.stringify(this.grupos()));
+  this.cdr.detectChanges();
+});
 
         this.editingId = null;
         this.formGroupTimes.reset();
@@ -157,10 +159,13 @@ save() {
         this.times.update(times => [...times, json]);
         this.listaEspera.update(lista => [...lista, json]);
         this.formGroupTimes.reset();
+        this.cdr.detectChanges();
       }
     });
   }
 }
+
+
 
 
 deleteTime(time: Times) {
@@ -190,8 +195,5 @@ deleteTime(time: Times) {
     }
   });
 }
-
-
-
 
 }
